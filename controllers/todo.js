@@ -12,6 +12,7 @@ app.use(
     extended: true,
   })
 );
+//############CREATE TODO#############
 let createTODOdata = (title, description, completed, created_at) => {
     return new Promise((resolve, reject) => {
       var sql ="insert into Todo(title,description,completed,created_at) values(?,?,?,?)";
@@ -42,6 +43,7 @@ let createTODOdata = (title, description, completed, created_at) => {
       });
     }
   }
+  //############LIST OF TODO#############
   let getTodoList = () => {
     return new Promise((resolve, reject) => {
       var sql = "select * from Todo";
@@ -70,6 +72,7 @@ let createTODOdata = (title, description, completed, created_at) => {
       });
     }
   }
+  //############GET TODO BY ID#############
   let TodoById = (id) => {
     return new Promise((resolve, reject) => {
       var sql = "select * from Todo where id=?";
@@ -96,7 +99,9 @@ let createTODOdata = (title, description, completed, created_at) => {
         message: "Error",
       });
     }
-  }let deleteTodo = (id) => {
+  }
+  //############DELETE TODO BY ID#############
+  let deleteTodo = (id) => {
     return new Promise((resolve, reject) => {
       var sql = "delete from Todo where id=?";
       connection.query(sql, [id], (err, results) => {
@@ -122,7 +127,9 @@ let createTODOdata = (title, description, completed, created_at) => {
         message: "Error",
       });
     }
-  }let updateTodoById = (title, description, completed, id) => {
+  }
+  //############UPDATE TODO BY ID#############
+  let updateTodoById = (title, description, completed, id) => {
     return new Promise((resolve, reject) => {
       var sql = "update Todo set title=?,description=?,completed=? where id=?";
       connection.query(
@@ -156,6 +163,7 @@ let createTODOdata = (title, description, completed, created_at) => {
       });
     }
   }
+  //############CHECK EMIAL VALIDATAION FOR USERNAME#############
   const emailCheck = (email) => {
     return new Promise((resolve, reject) => {
       var sql = "select * from Users where email=?";
@@ -168,6 +176,7 @@ let createTODOdata = (title, description, completed, created_at) => {
       });
     });
   }
+  //############CHECK USERNAME VALIDATAION FOR USER#############
   const usernameCheck = (username) => {
     return new Promise((resolve, reject) => {
       var sql = "select * from Users where username=?";
@@ -196,7 +205,7 @@ let createTODOdata = (title, description, completed, created_at) => {
       );
     });
   };
-
+//############CHECK USER#############
   async function createUsers(req, res) {
     try {
       let data = req.body;
